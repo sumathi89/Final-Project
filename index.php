@@ -23,11 +23,11 @@ else if($action =="validate_user")
 	if($success==true)
 	{
 	//	$result=getMainPage($cookie['my_id']);
-	header("Location:view/mainpage.php");
+		header("Location:view/mainpage.php");
 	}
 	else
 	{
-		header("Location: loginError.php");
+		header("Location:error/loginError.php");
 	}
 }
 ?>

@@ -1,18 +1,13 @@
 <?php
 function isUserValid($username,$password)
 {
-echo "count";
+
 global $db;
 $query='select * from store_login where username=:name and password=:pass';
-echo "count1";
 $statement=$db->prepare($query);
-echo "count 2";
 $statement->bindValue(":name",$username);
-echo "count 3";
 $statement->bindValue(":pass",$password);
-echo "count 4";
 $statement->execute();
-echo "count 5";
 $result=$statement->fetchAll();
 $statement->closeCursor();
 $count=$statement->rowCount();
@@ -32,5 +27,20 @@ setcookie('islogged',false);
 setcookie('id',false);
 return false;
 }
+}
+function createNewAccount($fname,$lname,$phone,$email,$pass,$gender)
+{
+global $db;
+$query='INSERT INTO store_login(username,password,firstName,lastName,Gender,phoneNo)values(:email,:pass,:fname,:lname,:gender,:phone)';
+$statement=$db->prepare($query);
+$statement->bindValue(":email",$email);
+$statement->bindValue(":pass",$pass);
+$statement->bindValue(":fname",$fname);
+$statement->bindValue(":lname",$lname);
+$statement->bindValue(":gender",$gender);
+$statement->bindValue(":phone",$phone);
+$statement->execute();
+$statement->closeCursor();
+return true;
 }
 ?>

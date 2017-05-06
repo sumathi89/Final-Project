@@ -19,7 +19,7 @@
  <button type="submit">Login</button>     
  </div>
  </form>
- <form action="login/register.php" class="register">
+ <form action="login/sign-up.php" class="register">
  <div>
  <button type="submit">Sign up</button>
  </div>
