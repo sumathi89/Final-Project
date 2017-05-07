@@ -36,6 +36,7 @@ if ( isset($_POST['signup']) ) {
  $gender=strip_tags($gender);
  $gender=htmlspecialchars($gender);
 
+
   // basic name validation
   if (empty($fname)) {
   $error = true;
@@ -98,18 +99,21 @@ if (empty($cpass))
 {
 $error=true;
 $cpassError="Please enter password.";
-if ($pass!=$cpass)
+}
+else if($pass!=$cpass)
 {
 $error=true;
 $cpassError="Password entered doesn't match.Please try again. ";
 }
-}
+
  
+
+$dateOfBirth = $_POST['year']."-". $_POST['month']."-".$_POST['day'];
 
   // if there's no error, continue to signup
 if( !$error ) {
 	
-     $result=  createNewAccount($fname,$lname,$phone,$email,$pass,$gender);
+     $result= createNewAccount($fname,$lname,$phone,$email,$pass,$gender,$dateOfBirth);
       if ($result) {
       $errTyp = "success";
       unset($fname);
@@ -118,6 +122,12 @@ if( !$error ) {
       unset($email);
       unset($pass);
       unset($cpass);
+       if($errTyp=="success"){
+
+       header("Location:../view/reg_Success.php");
+       exit();
+       }
+
    } else {
 $errTyp = "danger";
 $errMSG = "Something went wrong, try again later..."; 
@@ -130,7 +140,6 @@ $errMSG = "Something went wrong, try again later...";
 <title>Sign-Up</title>
 </head>
 <body id="body-color"> <div id="Sign-Up"> 
-
 <fieldset style="width:75%" align ="center"><legend>Registration Form</legend> 
 <table border="0" align="center">
 <tr>
@@ -201,17 +210,15 @@ print('<option value="'.$i.'"'.$selected.'>'.$i.'</option>'."\n");
 <option value="31">31</option>
 </select>
 </td>
+<td><?php echo $dobError; ?> </td> 
 </tr>
 <tr> <td>Email</td><td> <input  type="text" name="email"></td><td><?php echo $emailError; ?> </td> </tr>
 <tr> <td>Password</td><td><input type="password" name="pass"></td><td><?php echo $passError; ?> </td></td></tr>
 <tr> <td>Confirm Password</td><td><input type="password" name="cpass"></td><td><?php echo $cpassError; ?> </td> </tr>
 <tr> <td><input  id="button" type="submit" name="signup" value="Sign-up"></td> </tr> 
-</form>  
-</table> 
+</form>
+</table>
 </fieldset>
 </div>
-<?php if ($errTyp=="success"){ 
- header("Location:../view/reg_Success.php");
-}?>
 </body>
 </html>

@@ -11,6 +11,12 @@ if($action =="show_login_page")
 	include('login/login.php');
 
 }
+
+if ($action=="show_signup")
+{
+	include('login/sign-up.php');
+}
+
 else if($action =="validate_user")
 {
 ?>
@@ -19,14 +25,16 @@ else if($action =="validate_user")
 	$username=$_POST['reg_uname'];
 	$password=$_POST['reg_password'];
 	$success=isUserValid($username,$password);
-	echo $success;
+
 	if($success==true)
 	{
-	//	$result=getMainPage($cookie['my_id']);
-		header("Location:view/mainpage.php");
+	
+
+		header("Location:todo/todoItems.php");
 	}
 	else
 	{
+	
 		header("Location:error/loginError.php");
 	}
 }

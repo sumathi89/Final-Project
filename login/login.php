@@ -4,7 +4,7 @@
  </head>
  <body>
  <div class='container' align="center">
- <form method = "post" action="index.php" class="login">
+ <form method = "post" action="https://web.njit.edu/~ss3467/online_store/index.php" class="login">
  <div>
  <label><b>Username</b></label>
  <input type="text" name="reg_uname" placeholder="Enter Username" required>
@@ -19,7 +19,7 @@
  <button type="submit">Login</button>     
  </div>
  </form>
- <form action="login/sign-up.php" class="register">
+ <form action="https://web.njit.edu/~ss3467/online_store/login/sign-up.php" class="register">
  <div>
  <button type="submit">Sign up</button>
  </div>
