@@ -63,7 +63,7 @@ return true;
 function getMainPage($user_id){
 global $db;
 $status="N";
-$query = 'select * from todo_list where UID= :userid and Completed=:status';
+$query = 'select * from todo_list where UID= :userid and Completed=:status order by DueDate asc';
 $statement = $db->prepare($query);
 $statement->bindValue(':userid',$user_id);
 $statement->bindValue(':status',$status);
@@ -77,7 +77,7 @@ function getCompletedItems($user_id)
 {
 global $db;
 $status="Y";
-$query = 'select * from todo_list where UID= :userid and Completed=:status';
+$query = 'select * from todo_list where UID= :userid and Completed=:status order by DueDate asc';
 $statement = $db->prepare($query);
 $statement->bindValue(':userid',$user_id);
 $statement->bindValue(':status',$status);
@@ -157,12 +157,10 @@ return true;
 
 function add_item($itemName,$dueDate,$dueTime)
 {
-echo $dueDate;
-echo $dueTime;
 global $db;
 $status="N";
 $uid=$_COOKIE['my_id'];
-$query = 'INSERT INTO todo_list(UID,Items,DueDate,DueTime,Completed) VALUES(:uid,:itemName,:Duedate,:DueTime,:status)';
+$query = 'INSERT INTO todo_list(UID,Items,Completed,DueDate,DueTime) VALUES(:uid,:itemName,:status,:Duedate,:DueTime)';
 $statement = $db->prepare($query);
 $statement->bindValue(':uid',$uid);
 $statement->bindValue(':itemName',$itemName);

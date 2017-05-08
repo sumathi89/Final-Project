@@ -20,3 +20,9 @@ margin-top:5cm;
 width:30%;
 margin-left:37%;
 }
+.columnheader
+{
+    text-align: center;
+    text-transform: capitalize;
+    color: blue;
+}

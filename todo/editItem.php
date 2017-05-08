@@ -10,6 +10,7 @@ Edit Item
 <form method="post" action=".">
 <table>
 <tr>
+<input type="hidden" name="action" value="update_item">
 <td>ID</td><td><input type="text" name="ID" value="<?php echo $_COOKIE['item_id'];?>" readonly> </td></tr>
 <td>Item Name</td><td><input type="text" name="item_name" value="<?php echo  $_COOKIE['item_name']  ;?>"> </td></tr>
 <td>Due Date</td><td><input type="date" name="date" value="<?php echo  $_COOKIE['duedate']  ;?>"> </td></tr>

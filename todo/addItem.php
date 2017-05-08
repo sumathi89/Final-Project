@@ -10,6 +10,7 @@ Add Item
 <form method="post" action=".">
 <table>
 <tr>
+<input type="hidden" name="action" value="add_item">
 <td>Item Name</td><td><input type="text" name="item_name" > </td></tr>
 <td>Due Date</td><td><input type="date" name="date" > </td></tr>
 <td>Due Time</td><td><input type="time" name="time" > </td></tr>
