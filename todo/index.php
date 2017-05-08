@@ -59,7 +59,7 @@ include('../error/todoerror.php');
 }
 else
 {
-edit_item($itemId);
+$result=edit_item($itemId);
 header("Location:editItem.php");
 }
 }
