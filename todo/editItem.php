@@ -10,10 +10,10 @@ Edit Item
 <form method="post" action=".">
 <table>
 <tr>
-<td>ID</td><td><input type="text" name="ID" value="<?php echo $result['ID'] ;?>"> </td></tr>
-<td>Item Name</td><td><input type="text" name="item_name" value="<?php echo $result['items'] ;?>"> </td></tr>
-<td>Due Date</td><td><input type="date" name="date" value="<?php echo $result['DueDate'] ;?>"> </td></tr>
-<td>Due Time</td><td><input type="time" name="time" value="<?php echo $result['DueTime'] ;?>"> </td></tr>
+<td>ID</td><td><input type="text" name="ID" value="<?php echo $_COOKIE['item_id'];?>" readonly> </td></tr>
+<td>Item Name</td><td><input type="text" name="item_name" value="<?php echo  $_COOKIE['item_name']  ;?>"> </td></tr>
+<td>Due Date</td><td><input type="date" name="date" value="<?php echo  $_COOKIE['duedate']  ;?>"> </td></tr>
+<td>Due Time</td><td><input type="time" name="time" value="<?php echo  $_COOKIE['duetime']  ;?>"> </td></tr>
 <tr>
 <td>
 <input type="submit" name="update_item" value="Update Item">

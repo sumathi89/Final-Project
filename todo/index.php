@@ -60,8 +60,34 @@ include('../error/todoerror.php');
 else
 {
 $result=edit_item($itemId);
+if ($result==true)
+{
 header("Location:editItem.php");
 }
 }
+}
+
+else if ($action == 'update_item') {
+$itemId = filter_input(INPUT_POST, 'ID',FILTER_VALIDATE_INT);
+$itemName = filter_input(INPUT_POST, 'item_name');
+$dueDate = filter_input(INPUT_POST, 'date');
+$dueDate = date('Y-m-d', strtotime(str_replace('-', '/', $dueDate)));
+$dueTime = filter_input(INPUT_POST, 'time');
+$dueTime=strtotime($dueTime);
+if ($itemId ==NULL)
+{
+$error="Something went wrong.";
+include('../error/todoerror.php');
+}
+else
+{
+$result=update_item($itemId,$itemName,$dueDate,$dueTime);
+if ($result==true)
+{
+header("Location:todoItems.php");
+}
+}
+}
+
 
 ?>
