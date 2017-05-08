@@ -75,10 +75,49 @@ return $result;
 function delete_item($item_id)
 {
 global $db;
-$query = 'DELETE FROM todo_list  WHERE UID = :item_id';
+$query = 'DELETE FROM todo_list  WHERE ID = :item_id';
 $statement = $db->prepare($query);
 $statement->bindValue(':item_id', $item_id);
 $success = $statement->execute();
 $statement->closeCursor();    
 }
+
+function add_item($item_name,$uid)
+{
+global $db;
+$status="N";
+$query='INSERT INTO todo_list(UID,Items,Completed)values(:uid,:item_name,:status)';
+$statement=$db->prepare($query);
+$statement->bindValue(":uid",$uid);
+$statement->bindValue(":item_name",$item_name);
+$statement->bindValue(":status",$status);
+$statement->execute();
+$statement->closeCursor();
+return true;
+}
+
+function complete_item($item_id)
+{
+global $db;
+$status="Y";
+$query = 'UPDATE todo_list SET  Completed=:status  WHERE ID = :item_id';
+$statement = $db->prepare($query);
+$statement->bindValue(':item_id', $item_id);
+$statement->bindValue(':status', $status);
+$success = $statement->execute();
+$statement->closeCursor();
+}
+
+function edit_item($item_id)
+{
+global $db;
+$query = 'SELECT * FROM todo_list  WHERE ID = :item_id';
+$statement = $db->prepare($query);
+$statement->bindValue(':item_id', $item_id);
+$statement->execute();
+$result= $statement->fetchAll();
+$statement->closeCursor();
+return $result;
+}
+
 ?>

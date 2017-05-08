@@ -11,39 +11,62 @@ $compresult=getCompletedItems($_COOKIE['my_id']);
 <html>
 <body>
 <table border="1">
+<tr>
+<td>ID</td>
+<td>Item Name</td>
+<td>Status</td>
+</tr>
 <?php foreach($result as $res):?>
 <tr>
 <td> <?php echo $res['ID']; ?>  </td>
 <td> <?php echo $res['Items']; ?>  </td>
 <td><form action="." method="post">
+<input type="hidden" name="action" value="complete_item">
+<input type="hidden" name="item_id" value="<?php echo $res['ID']; ?>">
+<input type="submit" name="complete_item" value="Complete">
+</form></td>
+
+<td><form action="." method="post">
+<input type="hidden" name="action" value="edit_item">
+<input type="hidden" name="item_id" value="<?php echo $res['ID']; ?>">
+<input type="submit" name="edit_item" value="Edit">
+</form></td>
+
+<td><form action="." method="post">
 <input type="hidden" name="action" value="delete_items">
 <input type="hidden" name="item_id" value="<?php echo $res['ID']; ?>">
-<input type="submit" value="Delete">
+<input type="submit" name="delete_item" value="Delete">
 </form></td>
 </tr>  
 <?php endforeach;?>
 </table>
 <table border="1">
-<tr><td colspan="333"><b>Completed Items</b></td></tr>
+<tr><td colspan="3"><b>Completed Items</b></td></tr>
+<tr>
+<td>ID</td>
+<td>Item Name</td>
+</tr>
 <?php foreach($compresult as $rslt):?>
 <tr>
 <td> <?php echo $rslt['ID']; ?>  </td>
 <td> <?php echo $rslt['Items']; ?>  </td>
 <td><form action="." method="post">
 <input type="hidden" name="action" value="delete_items">
-<input type="hidden" name="item_id" value="<?php echo $res['ID']; ?>">
+<input type="hidden" name="item_id" value="<?php echo $rslt['ID']; ?>">
 <input type="submit" value="Delete">
 </form></td>
 </tr>
 <?php endforeach;?>
 </table>
-
+<table>
 <form method = 'post' action='index.php'>
-<strong> Description: </strong> <input type='text' name='description'/><br>
+<tr><td>
+<strong> Item Name: </strong> <input type='text' name='item_name'/><br></td>
 <input type = 'hidden' name = 'action' value='add_item'><br>
-<input type="submit" value="Add"/>
+<input type='hidden' name='uid' value="<?php echo $_COOKIE['my_id']; ?>">
+<td><input type="submit" value="Add Item"/></td></tr>
 </form>
-</body
->
+</table>
+</body>
 </html>
  
