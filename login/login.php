@@ -1,10 +1,11 @@
 <html>
 <head>
-<center><b>Online Furniture Store</b></center>
+<link rel="stylesheet" type="text/css" href="./css/main.css">
  </head>
  <body>
  <div class='container' align="center">
- <form method = "post" action="https://web.njit.edu/~ss3467/online_store/index.php" class="login">
+ <h1  align="center"><b>Online To-do List System </b></h1>
+  <form method = "post" action="https://web.njit.edu/~ss3467/online_store/index.php" class="login">
  <div>
  <label><b>Username</b></label>
  <input type="text" name="reg_uname" placeholder="Enter Username" required>

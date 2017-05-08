@@ -29,6 +29,20 @@ return false;
 }
 }
 
+function checkUser($username)
+{
+global $db;
+$query='select * from store_login where username=:name';
+$statement=$db->prepare($query);
+$statement->bindValue(":name",$username);
+$statement->execute();
+$user=$statement->fetchAll();
+$statement->closeCursor();
+$count=$statement->rowCount();
+return $user;
+}
+
+
 function createNewAccount($fname,$lname,$phone,$email,$pass,$gender,$dateOfBirth)
 {
 global $db;
@@ -141,7 +155,7 @@ $statement->closeCursor();
 return true;
 }
 
-function add_item($itemId,$itemName,$dueDate,$dueTime)
+function add_item($itemName,$dueDate,$dueTime)
 {
 echo $dueDate;
 echo $dueTime;

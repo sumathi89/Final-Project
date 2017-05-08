@@ -25,7 +25,17 @@ else if($action =="validate_user")
 	$username=$_POST['reg_uname'];
 	$password=$_POST['reg_password'];
 	$success=isUserValid($username,$password);
+        $user=checkUser($username);
+	if ($user[0]['username']==$username)
+	{
+	echo "hello";
 
+		if (!($user[0]['password']==$password))
+		{
+		echo "welcom";
+			header("Location:error/passError.php");	
+		}	
+	}
 	if($success==true)
 	{
 	

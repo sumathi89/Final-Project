@@ -82,12 +82,14 @@ header("Location:addItem.php");
 
 
 else if ($action == 'add_item') {
-$itemId = filter_input(INPUT_POST, 'ID',FILTER_VALIDATE_INT);
+
 $itemName = filter_input(INPUT_POST, 'item_name');
 $dueDate = filter_input(INPUT_POST, 'date');
 $dueDate = date('Y-m-d', strtotime(str_replace('-', '/', $dueDate)));
+echo "$dueDae";
 $dueTime = filter_input(INPUT_POST, 'time');
 $dueTime=strtotime($dueTime);
+echo "$dueTime";
 if ($itemId ==NULL)
 {
 $error="Something went wrong.";
@@ -95,7 +97,7 @@ include('../error/todoerror.php');
 }
 else
 {
-$addition=add_item($itemId,$itemName,$dueDate,$dueTime);
+$addition=add_item($itemName,$dueDate,$dueTime);
 if ($addition==true)
 {
 header("Location:todoItems.php");
