@@ -59,10 +59,9 @@ $compresult=getCompletedItems($_COOKIE['my_id']);
 <?php endforeach;?>
 </table>
 <table>
-<form method = 'post' action='index.php'>
+<form method = 'post' action='.'>
 <tr><td>
-<strong> Item Name: </strong> <input type='text' name='item_name'/><br></td>
-<input type = 'hidden' name = 'action' value='add_item'><br>
+<input type = 'hidden' name = 'action' value='AddItem'><br>
 <input type='hidden' name='uid' value="<?php echo $_COOKIE['my_id']; ?>">
 <td><input type="submit" value="Add Item"/></td></tr>
 </form>

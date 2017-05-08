@@ -68,7 +68,7 @@ $phoneError="Please enter the phone number.";
 else if(!preg_match("/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/", $phone))
 {
 $error=true;
-$phoneError="Phone No. must contain only numbers.";
+$phoneError="Phone No.should be in the format-XXX-XXX-XXXX";
 }
 
 
@@ -146,7 +146,7 @@ $errMSG = "Something went wrong, try again later...";
 <form method="POST" action="">
 <tr> <td>First Name</td><td> <input  type="text" name="fname"></td><td><?php echo $fnameError; ?> </td></tr>
 <tr> <td>Lastname</td><td> <input  type="text" name="lname"></td><td><?php echo $lnameError; ?> </td> </tr>
-<tr> <td>Phone Number</td><td><input type="text" name="phone"></td><td><?php echo $phoneError; ?> </td> </tr>
+<tr> <td>Phone Number</td><td><input type="text" name="phone"><td><font color="grey">Eg.000-000-0000</font></td></td><td><?php echo $phoneError; ?> </td> </tr>
 <tr> <td>Gender</td><td><input type="radio" name="gender" <?php if (isset($gender) && $gender=="female") echo "checked";?>value="female">Female
 <input type="radio" name="gender" <?php if (isset($gender) && $gender=="male") echo "checked";?> value="male">Male </td></tr>
 <tr><td>Date of Birth</td><td><select name="year" id="year" class="form-control">

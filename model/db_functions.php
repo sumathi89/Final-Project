@@ -28,6 +28,7 @@ setcookie('id',false);
 return false;
 }
 }
+
 function createNewAccount($fname,$lname,$phone,$email,$pass,$gender,$dateOfBirth)
 {
 global $db;
@@ -82,19 +83,7 @@ $success = $statement->execute();
 $statement->closeCursor();    
 }
 
-function add_item($item_name,$uid)
-{
-global $db;
-$status="N";
-$query='INSERT INTO todo_list(UID,Items,Completed)values(:uid,:item_name,:status)';
-$statement=$db->prepare($query);
-$statement->bindValue(":uid",$uid);
-$statement->bindValue(":item_name",$item_name);
-$statement->bindValue(":status",$status);
-$statement->execute();
-$statement->closeCursor();
-return true;
-}
+
 
 function complete_item($item_id)
 {
@@ -117,7 +106,60 @@ $statement->bindValue(':item_id', $item_id);
 $statement->execute();
 $result= $statement->fetchAll();
 $statement->closeCursor();
-return $result;
+$count=$statement->rowCount();
+
+if($count==1)
+{
+setcookie('item_id',$result[0]['ID']);
+setcookie('item_name',$result[0]['Items']);
+setcookie('duedate',$result[0]['DueDate']);
+setcookie('duetime',$result[0]['DueTime']);
+return true;
 }
+else
+{
+unset($_COOKIE['item_id']);
+unset($_COOKIE['item_name']);
+unset($_COOKIE['duedate']);
+unset($_COOKIE['duetime']);
+return false;
+}
+}
+
+function update_item($itemId,$itemName,$dueDate,$dueTime)
+{
+global $db;
+$query = 'UPDATE todo_list SET Items=:item_name,DueDate=:dueDate,DueTime=:dueTime WHERE ID = :item_id';
+echo $query;
+$statement = $db->prepare($query);
+$statement->bindValue(':item_id', $itemId);
+$statement->bindValue(':item_name',$itemName);
+$statement->bindValue(':dueDate',$dueDate);
+$statement->bindValue(':dueTime',$dueTime);
+$success = $statement->execute();
+$statement->closeCursor();
+return true;
+}
+
+function add_item($itemId,$itemName,$dueDate,$dueTime)
+{
+echo $dueDate;
+echo $dueTime;
+global $db;
+$status="N";
+$uid=$_COOKIE['my_id'];
+$query = 'INSERT INTO todo_list(UID,Items,DueDate,DueTime,Completed) VALUES(:uid,:itemName,:Duedate,:DueTime,:status)';
+$statement = $db->prepare($query);
+$statement->bindValue(':uid',$uid);
+$statement->bindValue(':itemName',$itemName);
+$statement->bindValue(':Duedate',$dueDate);
+$statement->bindValue(':DueTime',$dueTime);
+$statement->bindValue(':status',$status);
+$success = $statement->execute();
+$statement->closeCursor();
+return true;
+}
+
+
 
 ?>
