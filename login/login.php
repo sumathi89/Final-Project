@@ -10,21 +10,31 @@
  <label><b>Username</b></label>
  <input type="text" name="reg_uname" placeholder="Enter Username" required>
  </div>
+ <br>
  <div>
  <label><b>Password</b></label>
  <input type="password" name="reg_password" placeholder="Enter Password"
  required>
  <input type ="hidden" name="action" value="validate_user">
  </div>
- <div>
+ <br>
+<table>
+<tr>
+<td>
+<div>
  <button type="submit">Login</button>     
  </div>
- </form>
+  </form>
+  </td>
+  <td>
  <form action="https://web.njit.edu/~ss3467/online_store/login/sign-up.php" class="register">
  <div>
  <button type="submit">Sign up</button>
  </div>
  </form>
+ </td>
+ </tr>
+ </table>
  </div>
  </body>
  </html>

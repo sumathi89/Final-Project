@@ -137,16 +137,17 @@ $errMSG = "Something went wrong, try again later...";
 ?>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="../css/main.css">
 <title>Sign-Up</title>
 </head>
-<body id="body-color"> <div id="Sign-Up"> 
-<fieldset style="width:75%" align ="center"><legend>Registration Form</legend> 
+<body style="margin-left:50%;margin-top:10%" align="right" id="body-color"> <div id="Sign-Up"> 
+<fieldset style="width:80%" align ="right"><legend><b>Registration Form</b></legend> 
 <table border="0" align="center">
 <tr>
 <form method="POST" action="">
 <tr> <td>First Name</td><td> <input  type="text" name="fname"></td><td><?php echo $fnameError; ?> </td></tr>
 <tr> <td>Lastname</td><td> <input  type="text" name="lname"></td><td><?php echo $lnameError; ?> </td> </tr>
-<tr> <td>Phone Number</td><td><input type="text" name="phone"><td><font color="grey">Eg.000-000-0000</font></td></td><td><?php echo $phoneError; ?> </td> </tr>
+<tr> <td>Phone Number</td><td><input type="text" name="phone"><td><font color="lightgrey">Eg.000-000-0000</font></td></td><td><?php echo $phoneError; ?> </td> </tr>
 <tr> <td>Gender</td><td><input type="radio" name="gender" <?php if (isset($gender) && $gender=="female") echo "checked";?>value="female">Female
 <input type="radio" name="gender" <?php if (isset($gender) && $gender=="male") echo "checked";?> value="male">Male </td></tr>
 <tr><td>Date of Birth</td><td><select name="year" id="year" class="form-control">
@@ -215,7 +216,7 @@ print('<option value="'.$i.'"'.$selected.'>'.$i.'</option>'."\n");
 <tr> <td>Email</td><td> <input  type="text" name="email"></td><td><?php echo $emailError; ?> </td> </tr>
 <tr> <td>Password</td><td><input type="password" name="pass"></td><td><?php echo $passError; ?> </td></td></tr>
 <tr> <td>Confirm Password</td><td><input type="password" name="cpass"></td><td><?php echo $cpassError; ?> </td> </tr>
-<tr> <td><input  id="button" type="submit" name="signup" value="Sign-up"></td> </tr> 
+<tr><td></td> <td><input  id="button" type="submit" name="signup" value="Sign-up"></td> </tr> 
 </form>
 </table>
 </fieldset>

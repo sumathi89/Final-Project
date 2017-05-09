@@ -1,8 +1,8 @@
 <?php
 include('../model/database.php');
 include('../model/db_functions.php');
-echo "<h1> To do list system</h1><br/>";
-echo "Welcome, ".$_COOKIE['login'].'<br/>';
+echo "<h1 align='center'>Online To-do list system</h1><br/>";
+echo "Welcome<b> ".$_COOKIE['login'].'.</b><br/></br>';
 echo "Below you may find your to-do items: ";
 echo "<br> <br>";
 $result=getMainPage($_COOKIE['my_id']);
@@ -10,16 +10,16 @@ $compresult=getCompletedItems($_COOKIE['my_id']);
 ?>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="./css/main.css">
+<link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
-<body>
+<body class='bodyback'>
 <table border="1">
 <tr class='columnheader'>
-<td>ID</td>
-<td>Item Name</td>
-<td>Due Date</td>
-<td>Due Time</td>
-<td>Status</td>
+<td><b>ID</b></td>
+<td><b>Item Name</b></td>
+<td><b>Due Date</b></td>
+<td><b>Due Time</b></td>
+<td><b>Status</b></td>
 </tr>
 <?php foreach($result as $res):?>
 <tr>
@@ -51,10 +51,10 @@ $compresult=getCompletedItems($_COOKIE['my_id']);
 <table border="1">
 <tr><td colspan="5"><b>Completed Items</b></td></tr>
 <tr>
-<td>ID</td>
-<td>Item Name</td>
-<td>Due Date</td>
-<td>Due Time</td>
+<td><b>ID</b></td>
+<td><b>Item Name</b></td>
+<td><b>Due Date</b></td>
+<td><b>Due Time</b></td>
 </tr>
 <?php foreach($compresult as $rslt):?>
 <tr>
