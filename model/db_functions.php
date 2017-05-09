@@ -39,7 +39,18 @@ $statement->execute();
 $user=$statement->fetchAll();
 $statement->closeCursor();
 $count=$statement->rowCount();
-return $user;
+if ($count==1)
+{
+setcookie('user',$user[0]['username']);
+setcookie('pass',$user[0]['password']);
+return true;
+}
+else
+{
+unset($_COOKIE['pass']);
+unset($_COOKIE['user']);
+return false;
+}
 }
 
 
@@ -171,7 +182,4 @@ $success = $statement->execute();
 $statement->closeCursor();
 return true;
 }
-
-
-
 ?>

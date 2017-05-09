@@ -1,10 +1,10 @@
 <?php
 include('../model/database.php');
 include('../model/db_functions.php');
-echo "<h1 align='center'>Online To-do list system</h1><br/>";
-echo "Welcome<b> ".$_COOKIE['login'].'.</b><br/></br>';
-echo "Below you may find your to-do items: ";
-echo "<br> <br>";
+echo "<h1 align='center'>Online To-do list system</h1>";
+echo "<h2 align='center'>Welcome<b> ".$_COOKIE['login'].'.</b></h2>';
+echo "<h3 align='center'>Below you may find your to-do items:</h3>";
+echo "<br>";
 $result=getMainPage($_COOKIE['my_id']);
 $compresult=getCompletedItems($_COOKIE['my_id']);
 ?>
@@ -13,7 +13,7 @@ $compresult=getCompletedItems($_COOKIE['my_id']);
 <link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
 <body class='bodyback'>
-<table border="1">
+<table border="1" align="center">
 <tr class='columnheader'>
 <td><b>ID</b></td>
 <td><b>Item Name</b></td>
@@ -48,8 +48,8 @@ $compresult=getCompletedItems($_COOKIE['my_id']);
 <?php endforeach;?>
 </table>
 <br><br>
-<table border="1">
-<tr><td colspan="5"><b>Completed Items</b></td></tr>
+<table border="1" align="center">
+<tr><td align="center" colspan="5"><b>Completed Items</b></td></tr>
 <tr>
 <td><b>ID</b></td>
 <td><b>Item Name</b></td>
@@ -71,7 +71,7 @@ $compresult=getCompletedItems($_COOKIE['my_id']);
 <?php endforeach;?>
 </table>
 <br><br>
-<table>
+<table align="center">
 <form method = 'post' action='.'>
 <tr><td>
 <input type = 'hidden' name = 'action' value='AddItem'><br>

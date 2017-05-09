@@ -140,8 +140,8 @@ $errMSG = "Something went wrong, try again later...";
 <link rel="stylesheet" type="text/css" href="../css/main.css">
 <title>Sign-Up</title>
 </head>
-<body style="margin-left:50%;margin-top:10%" align="right" id="body-color"> <div id="Sign-Up"> 
-<fieldset style="width:80%" align ="right"><legend><b>Registration Form</b></legend> 
+<body style="margin-left:40%;margin-top:10%" align="right" id="body-color"> <div id="Sign-Up"> 
+<fieldset style="width:95%" align ="right"><legend><b>Registration Form</b></legend> 
 <table border="0" align="center">
 <tr>
 <form method="POST" action="">

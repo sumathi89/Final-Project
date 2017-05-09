@@ -20,21 +20,26 @@ if ($action=="show_signup")
 else if($action =="validate_user")
 {
 ?>
-<p>welcome</p>
 <?php
 	$username=$_POST['reg_uname'];
 	$password=$_POST['reg_password'];
+ 	$user=checkUser($username);
 	$success=isUserValid($username,$password);
-        $user=checkUser($username);
-	if ($user[0]['username']==$username)
+        if ($user==true)
 	{
-	echo "hello";
-
-		if (!($user[0]['password']==$password))
-		{
-		echo "welcom";
-			header("Location:error/passError.php");	
-		}	
+	 if ($_COOKIE['user']==$username)
+                 {
+                if ($_COOKIE['pass']!=$password)
+                {
+                 header("Location:error/passError.php");
+                  }
+          }
+	}
+	else
+	{
+	 
+	 header("Location:error/loginError.php");
+ 
 	}
 	if($success==true)
 	{
@@ -46,6 +51,8 @@ else if($action =="validate_user")
 	{
 	
 		header("Location:error/loginError.php");
+	
+
 	}
 }
 ?>
